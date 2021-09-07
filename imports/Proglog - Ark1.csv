@@ -1,0 +1,10 @@
+Date,Subjects,Type,Link,Duration,Comment
+06-09-2021,Blop,Blup7,Test,Test,Test
+28-08-2021,PHP,Exercise,https://www.w3schools.com/php/exercise.asp?filename=exercise_advanced6,30 minutes,"Could guess most answers, so barely learned anything."
+28-08-2021,PHP,Guide,https://alexwebdevelop.com/how-to-learn-php/,60,Did the rest. It was mostly reading and some examples. The guide had links for other exercises/tutorials that might be useful.
+30-08-2021,"PHP, database",Guide,https://alexwebdevelop.com/php-with-mysql/,180,"Easy to follow how to set up a database using XAMPP, phpMyAdmin and PDO. Spend some Duration on connection errors that got solved by a reboot."
+31-08-2021,"SQL, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit?usp=sharing,30,Made a few queries for some stats.
+05-09-2021,Ruby,Study,http://rubylearning.com/satishtalim/tutorial.html,45,Preparing for a job interview. A very long but good read about fundamentals.
+06-09-2021,Ruby,Test,https://www.ruby.or.jp/en/certification/examination/,30,Found a prep test for a certification exam. Did some of it as a warm up exercise.
+06-09-2021,PostgreSQL,Study,https://www.postgresqltutorial.com/,30,Skimmed through some features to compare with the SQL that I’m familiar with.
+06-09-2021,C#,Study,https://www.youtube.com/watch?v=S_fHI6qgceA&ab_channel=tutorialsEU,20,Watched a video about multicast delegates and events in C# while taking a break.
