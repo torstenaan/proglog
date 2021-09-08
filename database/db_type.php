@@ -4,7 +4,7 @@ class DB_Type {
 
     public static function exists($name) {
         include 'database\db_conn.php';
-    
+        
         $query = 'SELECT * FROM types WHERE name = :name';
     
         $values = array(
@@ -32,13 +32,13 @@ class DB_Type {
         }
     }
 
-    public static function insert_type($name) {
+    public static function insert($name) {
         include 'database\db_conn.php';
-    
+
         $query = 'INSERT INTO types (name) VALUES (:name)';
     
         $values = array(
-            ':name' => $name(),
+            ':name' => $name,
         );
     
         try
@@ -53,9 +53,30 @@ class DB_Type {
             die();
         }
     
-        echo "Type added successfully<br>";
-    
         return $pdo->lastInsertId('types');
+    }
+
+    public static function get_name($id){
+        include 'database\db_conn.php';
+
+        $query = 'SELECT * FROM types WHERE id = :id';
+
+        $values = array(
+            ':id' => $id
+        );
+        
+        try
+        {
+            $res = $pdo->prepare($query);
+            
+            $res->execute($values);
+        }
+        catch (PDOException $e)
+        {
+            echo 'Query error: ' . $e->getMessage();
+            die();
+        } 
+        return ($res->fetch())['name'];
     }
 }
 

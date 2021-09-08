@@ -3,11 +3,20 @@
 include 'database/db_activity.php';
 
 class Activity {
+  private $id;
   private $date;
   private $type_id;
   private $link;
   private $duration;
   private $comment;
+
+  function set_id($id){
+    $this->id = $id;
+  }
+
+  function get_id(){
+    return $this->id;
+  }
 
   function set_date($date) {
     $this->date = $date;
@@ -49,8 +58,12 @@ class Activity {
     return $this->comment;
   }
 
-  function insert_activity() {
-    return DB_Activity::insert_activity($this);
+  function insert() {
+    return DB_Activity::insert($this);
+  }
+
+  function delete() {
+    DB_Activity::delete($this->get_id());
   }
 }
 ?>

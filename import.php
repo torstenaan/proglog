@@ -1,3 +1,33 @@
+<form action="import.php" method="post" enctype="multipart/form-data">
+  Select csv to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" name="upload" value="Upload">
+</form>
+
+<?php
+if(isset($_POST["upload"])) {
+    $target_dir = "imports/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $uploadOk = 1;
+    if (file_exists($target_file)) {
+        echo "File already exists.";
+        $uploadOk = 0;
+    }
+    if($fileType != 'csv'){
+        echo "Wrong file format.";
+        $uploadOk = 0;
+    }
+    if ($uploadOk == 1) {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+}
+?>
+
 <?php
 $directory = getcwd() . '\imports';
 $files = array_diff(scandir($directory), array('..', '.'));
@@ -12,10 +42,11 @@ $files = array_diff(scandir($directory), array('..', '.'));
 </form>
 
 <?php
-include 'domain\activity.php';
-include 'domain\subject.php';
-include 'domain\activitySubject.php';
+
 include 'controllers\typeController.php';
+include 'controllers\activityController.php';
+include 'controllers\subjectController.php';
+include 'controllers\activitySubjectController.php';
 
 if(array_key_exists('import', $_POST) && array_key_exists('file', $_POST)) {
     $file = htmlspecialchars($_POST['file']);
@@ -29,6 +60,7 @@ if(array_key_exists('import', $_POST) && array_key_exists('file', $_POST)) {
                 && $headers[4] == "Duration" 
                 && $headers[5] == "Comment"){
             
+                $count = 0;
                 while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
                     $subjects = explode(", ", $row[1]);
                     $type_name = $row[2];
@@ -41,36 +73,18 @@ if(array_key_exists('import', $_POST) && array_key_exists('file', $_POST)) {
                     $date = mktime(0, 0, 0, $date_array[1], $date_array[0], $date_array[2]);
                     $date = date("Y-m-d", $date);
 
-                    $typeId = TypeController::get_type_id($type_name);
-
-                    
-                    // insert activity
-                    $activity = new Activity();
-                    $activity->set_date($date);
-                    $activity->set_type_id($typeId);
-                    $activity->set_link($link);
-                    $activity->set_duration($duration);
-                    $activity->set_comment($comment);
-                    $activityId = $activity->insert_activity();
-                    
-                    // check if subjects exists
-                    // if not insert subject
-                    // get subjectIds
-                    // insert activitySubjects                    
+                    $typeId = TypeController::get_id($type_name);
+                    $activityId = ActivityController::insert($date,$typeId,$link,$duration,$comment);
+               
                     foreach($subjects as $subject_name){
-                        $subject = new Subject();
-                        $subject->set_name($subject_name);
-                        $subjectId = $subject->exists();
-                        if(!$subjectId){
-                            $subjectId = $subject->insert_subject();
-                        }
-                        $activitySubject = new ActivitySubject();
-                        $activitySubject->set_activityId($activityId);
-                        $activitySubject->set_subjectId($subjectId);
-                        $activitySubject->insert_activity_subject();
+                        $subjectId = SubjectController::get_id($subject_name);
+                        ActivitySubjectController::insert($activityId, $subjectId);
                     }
+                    $count++;
                 }
                 fclose($handle);
+
+                echo "Import completed. " . $count . " entries added.<br />";
             }
             else {
                 echo "The format is wrong.<br />";

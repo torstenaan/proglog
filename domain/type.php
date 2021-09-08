@@ -16,7 +16,7 @@ class Type {
     return DB_Type::exists($this->get_name());
   }
 
-  function insert_type() {
+  function insert() {
     return DB_Type::insert($this->get_name());
   }
 }

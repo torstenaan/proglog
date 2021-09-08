@@ -7,101 +7,57 @@
 </nav>
 
 <?php
+include 'controllers\activityController.php';
+include 'controllers\typeController.php';
+include 'controllers\subjectController.php';
 
-include 'database\db_conn.php';
-
-$query = 'SELECT * FROM activities ORDER BY date ASC, Id ASC';
-
-try
-{
-   $res = $pdo->prepare($query);
-   
-   $res->execute();
-}
-catch (PDOException $e)
-{
-   echo 'Query error: ' . $e->getMessage();
-   die();
+if(array_key_exists('delete', $_POST)) {
+    $delete_id = htmlspecialchars($_POST['id']);
+    ActivityController::delete($delete_id);
 }
 
-$activities = $res->fetchAll(PDO::FETCH_ASSOC);
+$activities = ActivityController::get_all();
+?>
+
+<table border="1">
+    <tr>
+        <th>Date</th>
+        <th>Subjects</th>
+        <th>Type</th>
+        <th>Link</th>
+        <th>Duration</th>
+        <th>Comment</th>
+    </tr>
+<?php
 for($i = 0; $i < count($activities); $i++)
 { 
-    // Get type
-    $query = 'SELECT * FROM types WHERE id = :type_id';
+    $type = TypeController::get_name($activities[$i]['typeId']);
 
-    $values = array(
-        ':type_id' => $activities[$i]['typeId']
-     );
-    
-    try
-    {
-        $res = $pdo->prepare($query);
-        
-        $res->execute($values);
-    }
-    catch (PDOException $e)
-    {
-        echo 'Query error: ' . $e->getMessage();
-        die();
-    } 
-    $type = ($res->fetch())['name'];
+    $activity_id = $activities[$i]['id'];
 
-    // Get subjects
-    $query = 'SELECT name
-        FROM subjects
-        INNER JOIN activity_subjects 
-        ON subjects.id = activity_subjects.subjectId
-        AND activity_subjects.activityId = :activity_id';
+    $subjects = SubjectController::get_by_activity($activity_id);
     
-    $values = array(
-        ':activity_id' => $activities[$i]['id']
-    );
-    
-    try
-    {
-        $res = $pdo->prepare($query);
-        
-        $res->execute($values);
-    }
-    catch (PDOException $e)
-    {
-        echo 'Query error: ' . $e->getMessage();
-        die();
-    }
-    $subjects = "";
-    while ($row = $res->fetch(PDO::FETCH_ASSOC))
-    {
-        $subjects .= $row['name'] . ", ";
-    }
-    $subjects = substr($subjects, 0, -2);
-    
-    ?><table border="1">
-        <tr>
-            <th>Date</th>
-            <td><?=$activities[$i]['date']?></td>
-        </tr>
-        <tr>
-            <th>Subjects</th>
-            <td><?=$subjects?></td>
-        </tr>
-        <tr>
-            <th>Type</th>
-            <td><?=$type?></td>
-        </tr>
-        <tr>
-            <th>Link</th>
-            <td><?=$activities[$i]['link']?></td>
-        </tr>
-        <tr>
-            <th>Duration</th>
-            <td><?=$activities[$i]['duration']?></td>
-        </tr>
-        <tr>
-            <th>Comment</th>
-            <td><?=$activities[$i]['comment']?></td>
-        </tr>
-    </table>
+    ?>
+    <tr>
+        <td><?=$activities[$i]['date']?></td>
+        <td><?=$subjects?></td>
+        <td><?=$type?></td>
+        <td><?=$activities[$i]['link']?></td>
+        <td><?=$activities[$i]['duration']?></td>
+        <td><?=$activities[$i]['comment']?></td>
+        <td>
+            <form method="post" action="editActivity.php">
+                <input type="submit" name="edit" value="E"/>
+                <input type="hidden" name="id" value="<?php echo $activity_id; ?>"/>
+            </form>
+            <form method="post" action="index.php">
+                <input type="submit" name="delete" value="D"/>
+                <input type="hidden" name="id" value="<?php echo $activity_id; ?>"/>
+            </form>
+        </td>
+    </tr>
 <?php
 }
 ?>
+
+</table>

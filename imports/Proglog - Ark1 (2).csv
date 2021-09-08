@@ -1,0 +1,20 @@
+Date,Subjects,Type,Link,Duration,Comment
+28-08-2021,PHP,Exercise,https://www.w3schools.com/php/exercise.asp?filename=exercise_advanced6,30 minutes,"Could guess most answers, so barely learned anything."
+28-08-2021,PHP,Exercise,https://edabit.com/challenge,60 minutes,"A lot of variation and no givens, forcing you to read up on syntax. Had a trial period. I have used the site plenty on other subjects, must be new that it’s behind a paywall."
+28-08-2021,PHP,Guide,https://alexwebdevelop.com/how-to-learn-php/,180 minutes,"Did the introduction and day 1 to 3 in one sitting. It’s a lot of reading, and you have to come up with all the exercises yourself with very little inspiration."
+28-08-2021,PHP,Guide,https://alexwebdevelop.com/how-to-learn-php/,60,Did the rest. It was mostly reading and some examples. The guide had links for other exercises/tutorials that might be useful.
+30-08-2021,"PHP, database",Guide,https://alexwebdevelop.com/php-with-mysql/,180,"Easy to follow how to set up a database using XAMPP, phpMyAdmin and PDO. Spend some Duration on connection errors that got solved by a reboot."
+30-08-2021,"PHP, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit?usp=sharing,30,I want to turn this document into a web app. Thought about a database scheme. I Haven't implemented it yet.
+30-08-2021,"PHP, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit?usp=sharing,120,Finished the tables and most of the forms to add data.
+31-08-2021,"PHP, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit?usp=sharing,100,I am able to add all the data and display it all on tables on the index page. Considering what to do next.
+31-08-2021,"SQL, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit?usp=sharing,30,Made a few queries for some stats.
+04-09-2021,Ruby,Study,http://rubylearning.com/satishtalim/tutorial.html,120,Preparing for a job interview.
+05-09-2021,Ruby,Study,http://rubylearning.com/satishtalim/tutorial.html,300,Preparing for a job interview.
+05-09-2021,Ruby,Study,http://rubylearning.com/satishtalim/tutorial.html,45,Preparing for a job interview. A very long but good read about fundamentals.
+06-09-2021,Ruby,Test,https://www.ruby.or.jp/en/certification/examination/,30,Found a prep test for a certification exam. Did some of it as a warm up exercise.
+06-09-2021,PostgreSQL,Study,https://www.postgresqltutorial.com/,30,Skimmed through some features to compare with the SQL that I’m familiar with.
+06-09-2021,C#,Study,https://www.youtube.com/watch?v=S_fHI6qgceA&ab_channel=tutorialsEU,20,Watched a video about multicast delegates and events in C# while taking a break.
+06-09-2021,"PHP, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit,60,Started on how to import this sheet. Turned out securities made it a bit more cumbersome than expected. I can select files in a folder and read them. I want to add an upload function as well.
+06-09-2021,"PHP, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit,240,Finished how to import. I changed the way I insert to the database and want to refactor the old way at some point.
+07-09-2021,"PHP, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit,120,"Refactored for a better architecture. Added a classes to handle flow to the database, and begun to add controllers. I'm trying to go for a MVC structure, but it's mostly about to practise refactoring."
+07-09-2021,"PHP, web app",Project,https://docs.google.com/document/d/1tV8bkeIXL6QUV-xg2YW7Lp2RUuFY7yRueuARNeNXhi0/edit,0,Added github and the rest of the controllers.

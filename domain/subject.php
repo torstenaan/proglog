@@ -16,8 +16,8 @@ class Subject {
     return DB_Subject::exists($this->get_name());
   }
 
-  function insert_subject() {
-    return DB_Subject::insert_subject($this->get_name());
+  function insert() {
+    return DB_Subject::insert($this->get_name());
   }
 }
 ?>

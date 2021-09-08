@@ -20,8 +20,8 @@ class activitySubject {
     return $this->subjectId;
   }
 
-  function insert_activity_subject() {
-    return DB_ActivitySubject::insert_activity_subject($this->get_activityId(), $this->get_subjectId());
+  function insert() {
+    return DB_ActivitySubject::insert($this->get_activityId(), $this->get_subjectId());
   }
 }
 ?>
