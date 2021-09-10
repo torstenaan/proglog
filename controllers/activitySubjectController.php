@@ -4,11 +4,11 @@ include 'domain/activitySubject.php';
 
 class ActivitySubjectController {
 
-    public static function insert_activity_subject($activityId, $subjectId){
+    public static function insert($activity_id, $subject_id){
         $activitySubject = new ActivitySubject();
-        $activitySubject->set_activityId($activityId);
-        $activitySubject->set_subjectId($subjectId);
-        $activitySubject->insert($activityId, $subjectId);
+        $activitySubject->set_activityId($activity_id);
+        $activitySubject->set_subjectId($subject_id);
+        $activitySubject->insert($activity_id, $subject_id);
     }
 }
 

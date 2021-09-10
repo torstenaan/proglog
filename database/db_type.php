@@ -78,6 +78,25 @@ class DB_Type {
         } 
         return ($res->fetch())['name'];
     }
+
+    public static function get_all(){
+        include 'database\db_conn.php';
+        
+        $query = 'SELECT * FROM types';
+        
+        try
+        {
+            $res = $pdo->prepare($query);
+            $res->execute();
+            $types = $res->fetchAll();
+        }
+        catch (PDOException $e)
+        {
+            echo 'Query error: ' . $e->getMessage();
+            die(); 
+        }
+        return $types;
+    }
 }
 
 ?>

@@ -1,5 +1,4 @@
 <?php
-include 'database\db_conn.php';
 
 // query to get duration for total and for the first 4 types
 //SELECT SUM(duration) as total, SUM(CASE WHEN typeId = 1 THEN duration ELSE 0 END) as type1, SUM(CASE WHEN typeId = 2 THEN duration ELSE 0 END) as type2, SUM(CASE WHEN typeId = 3 THEN duration ELSE 0 END) as type3, SUM(CASE WHEN typeId = 4 THEN duration ELSE 0 END) as type4 FROM activities;

@@ -4,10 +4,10 @@ include 'domain/activity.php';
 
 class ActivityController {
 
-    public static function insert($date,$typeId,$link,$duration,$comment){
+    public static function insert($date,$type_id,$link,$duration,$comment){
         $activity = new Activity();
         $activity->set_date($date);
-        $activity->set_type_id($typeId);
+        $activity->set_type_id($type_id);
         $activity->set_link($link);
         $activity->set_duration($duration);
         $activity->set_comment($comment);

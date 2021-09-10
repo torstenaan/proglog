@@ -11,11 +11,19 @@ class TypeController {
         if(!$id){
             $id = $type->insert();
         }
-        return $typeId;
+        return $id;
     }
 
     public static function get_name($id){
-        DB_Type::get_name($id);
+        return DB_Type::get_name($id);
+    }
+
+    public static function get_all(){
+        return DB_TYPE::get_all();
+    }
+
+    public static function insert($name){
+        return DB_Type::insert($name);
     }
 }
 

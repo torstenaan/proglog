@@ -1,31 +1,11 @@
 <?php
-include 'database\db_conn.php';
 
-$query = 'SELECT * FROM subjects';
-try
-{
-   $res = $pdo->prepare($query);
-   $res->execute();
-   $subjects = $res->fetchAll();
-}
-catch (PDOException $e)
-{
-   echo 'Query error: ' . $e->getMessage();
-   die();
-}
+include 'controllers\subjectController.php';
+include 'controllers\typeController.php';
 
-$query = 'SELECT * FROM types';
-try
-{
-   $res = $pdo->prepare($query);
-   $res->execute();
-   $types = $res->fetchAll();
-}
-catch (PDOException $e)
-{
-   echo 'Query error: ' . $e->getMessage();
-   die();
-}
+$subjects = SubjectController::get_all();
+$types = TypeController::get_all();
+
 ?>
 
 <form action="activityAction.php" method="post">

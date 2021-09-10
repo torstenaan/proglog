@@ -88,6 +88,24 @@ class DB_Subject {
         }
         return substr($subjects, 0, -2);
     }
+
+    public static function get_all(){
+        include 'database\db_conn.php';
+    
+        $query = 'SELECT * FROM subjects';
+        try
+        {
+            $res = $pdo->prepare($query);
+            $res->execute();
+            $subjects = $res->fetchAll();
+        }
+        catch (PDOException $e)
+        {
+            echo 'Query error: ' . $e->getMessage();
+            die();
+        }
+        return $subjects;
+    }
 }
 
 ?>
