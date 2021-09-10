@@ -59,7 +59,7 @@ class DB_Subject {
     public static function get_by_activity($activity_id){
         include 'database\db_conn.php';
     
-        $query = 'SELECT name
+        $query = 'SELECT *
         FROM subjects
         INNER JOIN activity_subjects 
         ON subjects.id = activity_subjects.subjectId
@@ -81,12 +81,7 @@ class DB_Subject {
             die();
         }
 
-        $subjects = "";
-        while ($row = $res->fetch(PDO::FETCH_ASSOC))
-        {
-            $subjects .= $row['name'] . ", ";
-        }
-        return substr($subjects, 0, -2);
+        return $res->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function get_all(){

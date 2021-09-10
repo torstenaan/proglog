@@ -5,9 +5,11 @@ include 'controllers\activityController.php';
 include 'controllers\activitySubjectController.php';
 
 $subject_names = array();
-foreach ($_POST['subject_names'] as $name)
-{
-    array_push($subject_names, $name);
+if(isset($_POST["subject_names"])) {
+    foreach ($_POST['subject_names'] as $name)
+    {
+        array_push($subject_names, $name);
+    }
 }
 $date = $_POST['date'];
 $type_name = htmlspecialchars($_POST['type_name']);

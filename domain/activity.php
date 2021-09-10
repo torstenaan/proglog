@@ -65,5 +65,9 @@ class Activity {
   function delete() {
     DB_Activity::delete($this->get_id());
   }
+
+  function update(){
+    return DB_Activity::update($this);
+  }
 }
 ?>

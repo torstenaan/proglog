@@ -23,6 +23,21 @@ class ActivityController {
     public static function get_all(){
         return DB_Activity::get_all();
     }
+
+    public static function get($id){
+        return DB_Activity::get($id);
+    }
+
+    public static function update($id,$date,$type_id,$link,$duration,$comment){
+        $activity = new Activity();
+        $activity->set_id($id);
+        $activity->set_date($date);
+        $activity->set_type_id($type_id);
+        $activity->set_link($link);
+        $activity->set_duration($duration);
+        $activity->set_comment($comment);
+        return $activity->update();
+    }
 }
 
 ?>

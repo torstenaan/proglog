@@ -10,6 +10,10 @@ class ActivitySubjectController {
         $activitySubject->set_subjectId($subject_id);
         $activitySubject->insert($activity_id, $subject_id);
     }
+
+    public static function delete($activity_id, $subject_id){
+        DB_ActivitySubject::delete($activity_id, $subject_id);
+    }
 }
 
 ?>

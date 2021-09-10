@@ -37,16 +37,25 @@ for($i = 0; $i < count($activities); $i++)
 
     $subjects = SubjectController::get_by_activity($activity_id);
     
-    ?>
+
+    $subject_string = "";
+    if($subjects != null){
+        foreach ($subjects as $subject)
+        {
+           $subject_string .= $subject['name'] . ", ";
+        }
+        $subject_string = substr($subject_string, 0, -2);
+    }
+?>
     <tr>
         <td><?=$activities[$i]['date']?></td>
-        <td><?=$subjects?></td>
+        <td><?=$subject_string?></td>
         <td><?=$type?></td>
         <td><?=$activities[$i]['link']?></td>
         <td><?=$activities[$i]['duration']?></td>
         <td><?=$activities[$i]['comment']?></td>
         <td>
-            <form method="post" action="editActivity.php">
+            <form method="post" action="editActivityForm.php">
                 <input type="submit" name="edit" value="E"/>
                 <input type="hidden" name="id" value="<?php echo $activity_id; ?>"/>
             </form>

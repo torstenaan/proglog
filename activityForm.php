@@ -9,9 +9,7 @@ $types = TypeController::get_all();
 ?>
 
 <form action="activityAction.php" method="post">
-    <input type="date" name="date"
-       value="2021-08-30"
-       min="2021-08-30">
+    <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>">
 
     <p><select name="subject_names[]" id="subject_ids" multiple>
     <?php foreach ($subjects as $row): ?>
